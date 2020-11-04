@@ -176,7 +176,7 @@ namespace University.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Person");
+                    b.ToTable("Student");
                 });
 
             modelBuilder.Entity("University.Models.Course", b =>

@@ -23,7 +23,7 @@ namespace University.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Person",
+                name: "Student",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -34,7 +34,7 @@ namespace University.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Person", x => x.ID);
+                    table.PrimaryKey("PK_Student", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -142,9 +142,9 @@ namespace University.Migrations
                         principalColumn: "CourseID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Enrollment_Person_StudentID",
+                        name: "FK_Enrollment_Student_StudentID",
                         column: x => x.StudentID,
-                        principalTable: "Person",
+                        principalTable: "Student",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -190,7 +190,7 @@ namespace University.Migrations
                 name: "Course");
 
             migrationBuilder.DropTable(
-                name: "Person");
+                name: "Student");
 
             migrationBuilder.DropTable(
                 name: "Department");

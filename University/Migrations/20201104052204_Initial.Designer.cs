@@ -10,7 +10,7 @@ using University.Data;
 namespace University.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20201027132140_Initial")]
+    [Migration("20201104052204_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -178,7 +178,7 @@ namespace University.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Person");
+                    b.ToTable("Student");
                 });
 
             modelBuilder.Entity("University.Models.Course", b =>
