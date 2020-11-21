@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using University.Data;
+using University.Services;
 
 namespace University
 {
@@ -28,6 +30,9 @@ namespace University
             services.AddControllersWithViews();
             services.AddDbContext<SchoolContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<ILog, MyConsoleLogger>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,5 +62,11 @@ namespace University
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+        private async Task MyMiddleware(HttpContext context)
+        {
+            await context.Response.WriteAsync("Hello World! ");
+        }
+
     }
 }
